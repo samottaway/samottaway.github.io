@@ -1,0 +1,22 @@
+<form method="POST" action="">
+
+    <table align="center">
+        {{ education_form.csrf_token }}
+
+        <tr><td>{{ education_form.institution.label }}</td><td>{{ education_form.institution}}</td></tr>
+        <tr><td>{{ education_form.qualification_name.label }}</td><td>{{ education_form.qualification_name }}</td></tr>
+        <tr><td>{{ education_form.qualification_date.label }}</td><td>{{ education_form.qualification_date }}</td></tr>
+        <tr><td>{{ education_form.qualification_modules.label }}</td><td>{{ education_form.qualification_modules }}</td></tr>
+        <tr><td><button>{{ education_form.submit }}</button></td></tr>
+
+
+    </table>
+</form>
+
+<form method="post" action="" name="work">
+    {{ Work_experience_Form.csrf_token }}
+    {{ Work_experience_Form.location.label }}{{ Work_experience_Form.location }}
+    {{ Work_experience_Form.start_end_date.label }}{{ Work_experience_Form.start_end_date }}
+    {{ Work_experience_Form.description_of_tasks.label }}{{ Work_experience_Form.description_of_tasks }}
+    {{ Work_experience_Form.submit }}
+</form>

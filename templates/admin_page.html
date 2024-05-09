@@ -1,0 +1,38 @@
+{% include "header.html"%}
+
+<h1>users</h1>
+{% for user in users %}
+
+<button><a href="{{ url_for('delete_entry',id=user.id ,func='user_account') }}"><h3>{{user.name}}</h3></a></button>
+{% endfor %}
+
+<h1>hobbys</h1>
+{% for hobbie in hobbies %}
+<button><a href="{{ url_for('delete_entry',id=hobbie.id ,func='user_account') }}">{{hobbie.hobbies}}</a></button>
+{% endfor %}
+
+
+<h1>message</h1>
+{% for message in messages %}
+<button><a href="{{ url_for('delete_entry',id=message.id ,func='message') }}">{{message.name}}</a></button>
+{% endfor %}
+
+<h1>work experience</h1>
+{% for work in work_experience %}
+
+<button><a href="{{ url_for('delete_entry',id=work.id ,func='work') }}">{{work.location}}</a></button>
+{% endfor %}
+<h1>education</h1>
+{% for edu in education %}
+
+<button><a href="{{ url_for('delete_entry',id=work.id ,func='work') }}">{{edu.qualification_name}}</a></button>
+{% endfor %}
+
+
+<h1>projects</h1>
+{% for p in projects %}
+
+<button><a href="{{ url_for('delete_entry',id=p.id ,func='project') }}">{{p.name}}</a></button>
+{% endfor %}
+{% include "footer.html"%}
+

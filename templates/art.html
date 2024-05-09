@@ -1,0 +1,110 @@
+{% include "header.html" %}
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 25%;
+  padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+}
+
+.control_button {width: 30%;
+font-size: 40%
+}
+
+
+.button_title{
+color="#800080"}
+
+</style>
+</head>
+<body>
+   {% if  current_user.id == 1: %}
+          <div align="center" class="row">
+              {% from 'bootstrap5/form.html' import render_form %}
+                <div  class="col-md-12"> {{ render_form(add_art)|safe }}</div>
+          </div>
+    {% endif  %}
+<h2 align="center">art projects </h2>
+<p align="center">some pictures and stuff i made </p>
+
+<div class="row">
+{% for a in art %}
+  <div class="column">
+    <div class="card">
+      <h3>{{a.picture_name|safe}}</h3>
+        <img id="view_id_pic"  src="static/assets/art_images/{{a.file_path}}">
+      <p>date created {{ a.date|safe }}</p>
+      <p>{{ a.description|safe }}</p>
+                <div class="container position-relative pt-sm-5 pb-sm-5 mb-5 pt-1 mt-4">
+
+      <button class="control_button"><a href="{{ url_for('download_art',text=a.id) }}">download</a></button>
+                <button class="control_button"><a href="{{ url_for('view_art',r=a.id) }}"><h3>view</h3></a></button>
+            {% if  current_user.id == 1: %}
+        <button class="control_button"><a href="{{ url_for('delete_art',text=a.id) }}"><h3>delete</h3></a></button>
+               {% endif  %}
+    </div>
+    </div>
+  </div>
+    {% endfor %}
+</div>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% include "footer.html" %}
+
+
+
+

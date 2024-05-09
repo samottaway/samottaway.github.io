@@ -1,0 +1,48 @@
+{% include "header.html" %}
+{% from 'bootstrap5/form.html' import render_form %}
+        <div class="container"  align="center">
+          <h1>About</h1>
+<p>
+    hi my names sam and im a qualified engineer amatuer baker and make computer related stuff
+     and mechanic some bits ive made are stored in the projects section
+</p>
+        </div>
+    </div>
+
+
+
+{% if  current_user.id == 1: %}
+{% from 'bootstrap5/form.html' import render_form %}
+<div class="container position-relative pt-sm-5 pb-sm-5 mb-5 pt-1 mt-4">
+        <div class="container"  align="center">
+                  <h2>
+    education
+</h2>
+
+
+{{ render_form(education_form) }}
+<h2>
+    work experience
+</h2>
+{{ render_form(Work_experience_Form) }}
+
+<h2>
+    hobbies
+</h2>
+{{ render_form(hobbies_form) }}
+        </div>
+    </div>
+        </div>
+    </div>
+        <div class="container"  align="center">
+        </div>
+ {% endif %}
+
+
+
+
+{% if  current_user.id == 1: %}
+
+ {% endif %}
+
+{% include "footer.html" %}

@@ -1,0 +1,96 @@
+
+
+
+<!DOCTYPE html>
+<!--
+	Astral by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+
+{% from 'bootstrap5/form.html' import render_form %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% from 'bootstrap5/form.html' import render_form %}
+{{ bootstrap.load_css() }}
+
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+
+
+		<meta charset="utf-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="static/assets/css/main.css" />
+    <link rel="stylesheet" href="    {{ url_for('static', filename='assets/css/main.css') }}" />
+
+		<noscript><link rel="stylesheet"  href="    {{ url_for('static', filename='assets/css/noscript.css') }}"/></noscript>
+        <meta charset="utf-8">
+
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    		<title>Astral by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+		<noscript><link rel="stylesheet" href="{{ url_for('static', filename='assets/css/noscript.css') }}" /></noscript>
+
+         {% if  current_user.id == 1: %}
+    		    <nav id="nav">
+
+
+						<a href="{{ url_for('home') }}" class="icon solid fa-home"><span>Home</span></a>
+						<a href="{{ url_for('contact') }}" class="icon solid fa-envelope"><span>Contact</span></a>
+
+                        <a href="{{ url_for('recipes') }}" class="icon solid fas fa-pizza-slice"><span>recipes</span></a>
+                        <a href="{{ url_for('papers') }}" class="icon solid fa-solid fa-newspaper"><span>papers</span></a>
+                        <a href="{{ url_for('art') }}" class="icon solid fas fa-paint-brush"><span>art</span></a>
+                        <a href="{{ url_for('programs') }}" class="icon solid fas fa-desktop "><span>programs</span></a>
+                        <a href="{{ url_for('log_out') }}" class="icon solid fas fa-sign-in-alt"><span>logout</span></a>
+
+
+    </nav>
+
+
+
+         {% elif  current_user.is_authenticated: %}
+    		    <nav id="nav">
+						<a href="{{ url_for('home') }}" class="icon solid fa-home"><span>Home</span></a>
+
+						<a href="{{ url_for('contact') }}" class="icon solid fa-envelope"><span>Contact</span></a>
+
+                        <a href="{{ url_for('recipes') }}" class="icon solid fas fa-pizza-slice"><span>recipes</span></a>
+                        <a href="{{ url_for('papers') }}" class="icon solid fa-solid fa-newspaper"><span>papers</span></a>
+                        <a href="{{ url_for('art') }}" class="icon solid fas fa-paint-brush"><span>art</span></a>
+                        <a href="{{ url_for('programs') }}" class="icon solid fas fa-desktop "><span>programs</span></a>
+                        <a href="{{ url_for('logout') }}" class="icon solid fas fa-sign-in-alt"><span>logout</span></a>
+
+
+    </nav>
+
+
+
+
+
+		 {% elif not current_user.is_authenticated: %}
+		    <nav id="nav">
+						<a href="{{ url_for('home') }}" class="icon solid fa-home"><span>Home</span></a>
+
+						<a href="{{ url_for('contact') }}" class="icon solid fa-envelope"><span>Contact</span></a>
+
+                        <a href="{{ url_for('recipes') }}" class="icon solid fas fa-pizza-slice"><span>recipes</span></a>
+                        <a href="{{ url_for('papers') }}" class="icon solid fa-solid fa-newspaper"><span>papers</span></a>
+                        <a href="{{ url_for('art') }}" class="icon solid fas fa-paint-brush"><span>art</span></a>
+                        <a href="{{ url_for('programs') }}" class="icon solid fas fa-desktop "><span>programs</span></a>
+                        <a href="{{ url_for('register') }}" class="icon solid fas fa-solid fa-registered"><span>register</span></a>
+                        <a href="{{ url_for('login') }}" class="icon solid fas fa-sign-in-alt"><span>login</span></a>
+
+    </nav>
+    {% endif %}
+
+
+
+
+
+
+<body class="website manage" background-color="#ffffff ">

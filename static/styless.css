@@ -1,0 +1,34 @@
+.viewer-recipe-container {  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 0.3fr 1.7fr 1fr 1fr 1fr;
+  grid-auto-columns: 1fr;
+  gap: 3px 7px;
+  grid-auto-flow: row dense;
+  grid-template-areas:
+    "home home home home"
+    "img img description description"
+    "img img description description"
+    ". . . ."
+    ". . . .";
+  width: 100%;
+  height: 100%;
+
+
+
+}
+
+.home { grid-area: home; }
+
+.img { grid-area: img; }
+
+.description { grid-area: description;
+position: relative;
+ bottom: 40px;}
+
+
+#website manage {
+background-color:powder blue;
+color:powder blue;
+"background-color:aquamarine";
+}
+

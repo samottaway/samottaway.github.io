@@ -1,0 +1,95 @@
+{% include "header.html" %}
+
+
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 25%;
+  padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+}
+
+.control_button {width: 30%;
+font-size: 40%
+}
+
+
+.button_title{
+color="#800080"}
+</style>
+
+    {% if  current_user.id == 1: %}
+<div class="container position-relative pt-sm-5 pb-sm-5 mb-5 pt-1 mt-4">
+
+
+{% from 'bootstrap5/form.html' import render_form %}
+          <div class="container"  align="center">
+         {{ render_form(paper) }}
+        </div>
+
+   {% endif  %}
+
+  </div>
+
+
+<h1 class="paper title" align="center" >papers</h1>
+
+
+<p align="center">some papers i wrote  </p>
+<div class="row">
+  {% for p in papers %}
+  <div class="column">
+    <div class="card">
+      <h6>{{ p.paper_name }}</h6>
+      <p >{{ p.paper_description|safe }}</p>
+
+        <div class="container position-relative pt-sm-5 pb-sm-5 mb-5 pt-1 mt-4">
+
+      <button class="control_button"><a href="{{ url_for('download_paper',text=p.id) }}">download</a></button>
+                <button class="control_button"><a href="{{ url_for('download_paper',text=p.id) }}"><h3>view paper</h3></a></button>
+            {% if  current_user.id == 1: %}
+        <button class="control_button"><a href="{{ url_for('delete_paper',text=p.id) }}"><h3>view paper</h3></a></button>
+               {% endif  %}
+    </div>
+</div>
+  </div>
+ {% endfor %}
+
+
+{% include "footer.html" %}

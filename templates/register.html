@@ -1,0 +1,12 @@
+{% include "header.html" %}
+
+<h1 class="form-label" align="center"> Register Form</h1>
+{% from 'bootstrap5/form.html' import render_form %}
+
+
+<div class="container position-relative pt-sm-5 pb-sm-5 mb-5 pt-1 mt-4">
+        <div class="container"  align="center">
+          {{ render_form(register_form) }}
+        </div>
+    </div>
+{% include "footer.html" %}

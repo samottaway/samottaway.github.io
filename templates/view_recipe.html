@@ -1,0 +1,41 @@
+{% include "header.html" %}
+
+
+
+<div class="container position-relative pt-sm-5 pb-sm-5 mb-5 pt-1 mt-4">
+        <div class="container"  align="center">
+            <h1 class="recipetitle">{{r.recipe_name|safe}}</h1>
+          <img id="view_id_pic" height="600" width="900" src="{{ url_for('static', filename='/assets/recipe_image/' + r.file_path )}}">
+
+
+
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>cooking steps</h3>
+                    {{ r.cooking_steps|safe }}</div>
+                <div class="col-md-6">
+                    <h3>ingredients</h3>
+                    {{ r.ingredients|safe }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                   <h4>description</h4>
+                    <p>{{r.description|safe}}</p>
+                    </div>
+                   <div class="col-md-6">
+                       <td class="projects"><button><a href="{{ url_for('download_recipes',text=r.id) }}"><h3>download {{r.recipe_pdf|safe}} file </h3></a></button></td>
+                       <h4>date</h4><h4>{{r.recipe_date|safe}}</h4>
+                    </div>
+            </div>
+          <div align="center" class="row">
+              {% from 'bootstrap5/form.html' import render_form %}
+                <div  class="col-md-12"> {{ render_form(comment_form)|safe }}</div>
+          </div>
+
+
+{% include "footer.html" %}
+
+
+
+ </div>
+     </div>

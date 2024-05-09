@@ -1,0 +1,107 @@
+{% include "header.html" %}
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 25%;
+  padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+}
+
+
+.control_button {width: 30%;
+font-size: 40%
+}
+
+
+.button_title{
+color="#800080"}
+
+</style>
+
+
+<h1 align="center ">programs </h1>
+<p align="center">some apps and stuff. that  built</p>
+
+{% if  current_user.id == 1: %}
+
+{% from 'bootstrap5/form.html' import render_form %}
+
+
+
+
+
+
+<div class="container position-relative pt-sm-5 pb-sm-5 mb-5 pt-1 mt-4">
+        <div class="container"  align="center">
+            {{ render_form(program) }}
+        </div>
+    </div>
+ {% endif %}
+
+
+
+<div class="row">
+  {% for p in programs %}
+  <div class="column">
+    <div class="card">
+      <h2>{{ p.program_name|safe }}</h2>
+      <p>date :{{ p.date|safe }}</p>
+      <p>{{ p.description|safe }}</p>
+
+                   <div class="container position-relative pt-sm-5 pb-sm-5 mb-5 pt-1 mt-4">
+        <button class="control_button"><a href="{{ url_for('download_program',text=p.id) }}"><h3>download</h3></a></button>
+
+                                   {% if  current_user.id == 1: %}
+        <button class="control_button"><a href="{{ url_for('delete_art',text=p.id) }}"><h3>delete paper</h3></a></button>
+                       {% endif %}
+
+                       </div>
+    </div>
+  </div>
+
+  </div>
+{% endfor %}
+
+          <div align="center" class="row">
+              {% from 'bootstrap5/form.html' import render_form %}
+                <div  class="col-md-12"> {{ render_form(comment)|safe }}</div>
+          </div>
+
+
+{% include "footer.html" %}
+

@@ -1,0 +1,48 @@
+{% include "header.html" %}
+
+
+
+
+{% from 'bootstrap5/form.html' import render_form %}
+
+
+
+
+
+						<!-- Contact -->
+							<article id="contact" class="panel">
+								<header>
+									<h2>Contact Me</h2>
+								</header>
+								{{ contact_form.hidden_tag() }}
+								<form action="https://formsubmit.co/samottaway93@gmail.com" method="POST">
+
+									<div>
+										<div class="row">
+											<div class="col-6 col-12-medium">
+												{{ contact_form.name }}
+
+											</div>
+											<div class="col-6 col-12-medium">
+
+												{{ contact_form.email }}
+											</div>
+											<div class="col-12">
+
+												{{ contact_form.subject }}
+											</div>
+											<div class="col-12">
+
+												{{ contact_form.message }}
+											</div>
+											<div class="col-12">
+
+												<button>{{ contact_form.submit }}</button>
+											</div>
+										</div>
+									</div>
+								</form>
+							</article>
+
+
+{% include "footer.html" %}

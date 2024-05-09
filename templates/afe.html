@@ -1,0 +1,102 @@
+{% include "header.html" %}
+<h1 align="center">Recipes</h1>
+{% if  current_user.id == 1: %}
+{% from 'bootstrap5/form.html' import render_form %}
+
+
+<div class="container position-relative pt-sm-5 pb-sm-5 mb-5 pt-1 mt-4">
+        <div class="container"  align="center">
+            <h2>add recipe form</h2>
+        {{ render_form(recipe_form) }}
+        </div>
+    </div>
+
+{% endif %}
+{% for r in recipes %}
+
+
+
+
+
+
+
+
+                    <div>
+						<h2>{{ r.recipe_name|safe }}</h2>
+						   <h4>{{ r.recipe_date|safe }}</h4>
+                    <p>{{ r.description|safe }}</p>
+						<table><tr>
+							<td><button><a href="{{ url_for('download_recipes',text=r.id) }}"><h3>download</h3></a></button></td>
+							<td><button><a href="{{ url_for('view_recipe',r=r.id) }}"><h3>view</h3></a></button></td>
+							<td><button><a href="{{ url_for('delete_recipes',text=r.id) }}"><h3>delete</h3></a></button></td>
+						</tr></table>
+
+
+
+
+        </div>
+
+
+
+</div>
+</div>
+
+{% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{%  else: %}
+
+{% for r in recipes %}
+<div>
+
+
+
+    <div class="container position-relative pt-sm-5 pb-sm-5 mb-5 pt-1 mt-4">
+        <div class="container">
+             <h2 align="center">{{ r.recipe_name|safe }}</h2>
+            <div class="row">
+                <div class="col-md-6"><img class="img-fluid rounded h-100 pt-2 w-50" alt="..." src="static/assets/recipe_image/{{r.file_path}}"></div>
+                <div class="col-md-6">
+                        <p>{{ r.description|safe }}</p>
+                   <h4>{{ r.recipe_date|safe }}</h4>
+                    <p>{{ r.description|safe }}</p>
+                    <div>
+                    <button><a href="{{ url_for('download_recipes',text=r.id) }}"><h3>download</h3></a></button>
+                    <button><a href="{{ url_for('view_recipe',r=r.id) }}"><h3>view recipe </h3></a></button>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+
+</div>
+</div>
+
+{% endfor %}
+ {% endif %}
+
+		<!-- Scripts -->
+			<script src="static/assets/js/jquery.min.js"></script>
+			<script src="static/assets/js/browser.min.js"></script>
+			<script src="static/assets/js/breakpoints.min.js"></script>
+			<script src="static/assets/js/util.js"></script>
+			<script src="static/assets/js/main.js"></script>
+{% include "footer.html" %}
+
